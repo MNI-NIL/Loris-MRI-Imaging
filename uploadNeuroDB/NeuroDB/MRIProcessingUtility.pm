@@ -192,12 +192,13 @@ sub determineSubjectID {
     #
     # 3 params instead of 4
     #
-    if ($tarchiveInfo->{'PatientName'} =~ /$Settings::regex_pattern/i){
+    if ($tarchiveInfo->{'PatientName'} =~ /$Settings::PatientID_regex/i){
       $identifier = $tarchiveInfo->{'PatientName'};
     }
-    elsif ($tarchiveInfo->{'PatientID'} =~ /$Settings::regex_pattern/i){
+    elsif ($tarchiveInfo->{'PatientID'} =~ /$Settings::PatientID_regex/i){
       $identifier = $tarchiveInfo->{'PatientID'};
     }
+    
     my $subjectIDsref = Settings::getSubjectIDs(
                             $identifier,
                             $scannerID,
@@ -269,10 +270,10 @@ sub determinePSC {
     my $identifier = undef;
     $to_log = 1 unless defined $to_log;
 
-    if ($tarchiveInfo->{'PatientName'} =~ /$Settings::regex_pattern/i){
+    if ($tarchiveInfo->{'PatientName'} =~ /$Settings::PatientID_regex/i){
       $identifier = $tarchiveInfo->{'PatientName'};
     }
-    elsif ($tarchiveInfo->{'PatientID'} =~ /$Settings::regex_pattern/i){
+    elsif ($tarchiveInfo->{'PatientID'} =~ /$Settings::PatientID_regex/i){
       $identifier = $tarchiveInfo->{'PatientID'};
     }
     my ($center_name, $centerID) =
